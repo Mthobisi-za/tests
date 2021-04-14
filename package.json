@@ -1,0 +1,16 @@
+{
+  "name": "mtho",
+  "version": "1.0.0",
+  "description": "This is my first testing project",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter mocha-simple-html-reporter --reporter-options output=report.html"
+  },
+  "author": "Mtho dev",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "mocha-simple-html-reporter": "^2.0.0"
+  }
+}
