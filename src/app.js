@@ -3,7 +3,6 @@ function  greet(a){
     return "Hello "+ a
 }
 function isFromBellville(carName){
-    console.log(carName)
       if(carName.startsWith("CY")){
           return true
       }
@@ -63,7 +62,6 @@ function yearsAgo(year_1){
           empty.push(con)
         }
       }
-    console.log(empty.length)
     return   empty.length
   }
   function transportFee(time){
@@ -101,8 +99,74 @@ function yearsAgo(year_1){
     var total = sms + call
     return  "R" + total.toFixed(2)
   }
-
-
+  function fromWhere(num){
+  
+    if(num.includes("CY")){
+    return "Bellville"
+    }
+    
+     else if(num.includes("CJ")){
+     return "Paarl"
+     }
+    
+     else if(num.includes("CA")){
+       return "Cape Town"
+     }
+    
+     else{
+     return "Some other place!"}
+  }
+  function findItemsOver20(str){
+    var cap = str
+    if(cap.length == 0){
+      return 0
+    }
+    var product =[];
+    for(let value of cap){
+      var qu = value
+      if(qu.qty > 20){
+          product.push({name:qu.name, qty: qu.qty})
+        }
+    }
+      return product
+    }
+    function findItemsOver(str, sec){
+    var cap = str
+    var product =[];
+    for(let value of cap){
+      var qu = value
+      if(qu.qty > sec){
+          product.push({name:qu.name, qty: qu.qty})
+        }
+    }
+      return product
+    }
+    function mostProfitableDepartment(data){
+      var emptyMap = {}
+     for(i = 0; i < data.length; i++){
+      var depart = data[i];
+       emptyMap[depart.department] = 0 ;
+      
+     }
+      for(i = 0; i < data.length; i++){
+      var depart = data[i];
+       var current = emptyMap[depart.department] 
+       current += depart.sales
+      emptyMap[depart.department] = current
+     }
+      var now = 0
+      var text = ""
+      for(const dep in emptyMap){
+        const c = emptyMap[dep]
+        if(c>now){
+          now = c;
+          text = dep;
+          
+        }  
+      }
+        return text
+    }
+    
 module.exports ={
     greet: greet,
     bell: isFromBellville,
@@ -115,9 +179,9 @@ module.exports ={
     ////--------undeclared functions
     trans: transportFee,
     totalp: totalPhoneBill,
-//    fromw: fromWhere,
-//    find: findItemsOver20,
-//    findi: findItemsOver,
-//    most: mostProfitableDepartment
+    fromw: fromWhere,
+    find: findItemsOver20,
+    findi: findItemsOver,
+    most: mostProfitableDepartment
 }
 ///*mochal --reporter mocha-simple-html-reporter --reporter-options output=report.htm */
